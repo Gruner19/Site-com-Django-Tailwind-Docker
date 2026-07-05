@@ -7,15 +7,13 @@
 A página principal agora exibe tags no formato `#tagname` abaixo do
 conteúdo de cada mensagem, quando tags estão associadas.
 
-**PDF:** [capturas/parte4-index.pdf](capturas/parte4-index.pdf)
-**HTML:** [capturas/parte4-index.html](capturas/parte4-index.html)
+![Página inicial](capturas/parte4-inicio.png)
 
 ### Página /sobre/ (`http://localhost:8000/sobre/`)
 
 Página sobre mantida das partes anteriores.
 
-**PDF:** [capturas/parte4-sobre.pdf](capturas/parte4-sobre.pdf)
-**HTML:** [capturas/parte4-sobre.html](capturas/parte4-sobre.html)
+![Página sobre](capturas/parte4-sobre.png)
 
 ### Painel administrativo (`http://localhost:8000/admin/`)
 
@@ -25,8 +23,7 @@ O admin agora exibe:
   (dois painéis lado a lado "disponíveis" / "escolhidas")
 - Filtro lateral por tags
 
-**PDF:** [capturas/parte4-admin.pdf](capturas/parte4-admin.pdf)
-**HTML:** [capturas/parte4-admin.html](capturas/parte4-admin.html)
+![Painel admin](capturas/parte4-admin.png)
 
 ## Funcionalidades implementadas
 
