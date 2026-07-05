@@ -1,11 +1,17 @@
 from django.shortcuts import render
 
-from .models import Mensagem
+from .models import Categoria, Mensagem, Tag
 
 
 def index(request):
     mensagens = Mensagem.objects.all()
-    return render(request, "home/index.html", {"mensagens": mensagens})
+    categorias = Categoria.objects.all()
+    tags = Tag.objects.all()
+    return render(request, "home/index.html", {
+        "mensagens": mensagens,
+        "categorias": categorias,
+        "tags": tags,
+    })
 
 
 def sobre(request):

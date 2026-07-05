@@ -1,6 +1,16 @@
 from django.db import models
 
 
+class Tag(models.Model):
+    slug = models.SlugField(max_length=50, unique=True)
+
+    class Meta:
+        ordering = ["slug"]
+
+    def __str__(self):
+        return self.slug
+
+
 class Categoria(models.Model):
     nome = models.CharField(max_length=50, unique=True)
 
@@ -22,6 +32,7 @@ class Mensagem(models.Model):
         blank=True,
         related_name="mensagens",
     )
+    tags = models.ManyToManyField(Tag, blank=True, related_name="mensagens")
     criada_em = models.DateTimeField(auto_now_add=True)
 
     class Meta:
