@@ -1,36 +1,38 @@
-# Parte 4 — Relacionamento muitos-para-muitos (Tag ↔ Mensagem)
+# Parte 5 — Formulário HTML e o ciclo CRUD com Django
 
 ## Resultados obtidos
 
 ### Página inicial (`http://localhost:8000`)
 
-A página principal agora exibe tags no formato `#tagname` abaixo do
-conteúdo de cada mensagem, quando tags estão associadas.
+A página principal agora exibe um botão **+ Nova mensagem** e um link para o
+formulário público, além da lista de mensagens com categorias e tags.
 
-![Página inicial](capturas/parte4-inicio.png)
+![Página inicial](capturas/parte5-inicio.png)
+
+### Página /nova/ (`http://localhost:8000/nova/`)
+
+Formulário público para cadastrar mensagens com tags no formato de texto livre
+separado por vírgula. Usa `ModelForm` com validação automática e proteção CSRF.
+
+![Formulário nova mensagem](capturas/parte5-nova.png)
 
 ### Página /sobre/ (`http://localhost:8000/sobre/`)
 
 Página sobre mantida das partes anteriores.
 
-![Página sobre](capturas/parte4-sobre.png)
+![Página sobre](capturas/parte5-sobre.png)
 
 ### Painel administrativo (`http://localhost:8000/admin/`)
 
-O admin agora exibe:
-- Modelo `Tag` cadastrável com campo `nome`
-- Formulário de `Mensagem` com campo `Tags` usando `filter_horizontal`
-  (dois painéis lado a lado "disponíveis" / "escolhidas")
-- Filtro lateral por tags
+O admin continua funcionando normalmente para gerenciar mensagens, tags e categorias.
 
-![Painel admin](capturas/parte4-admin.png)
+![Painel admin](capturas/parte5-admin.png)
 
 ## Funcionalidades implementadas
 
-- Modelo `Tag` (SlugField, nome único)
-- Campo `tags` (ManyToManyField) em `Mensagem`
-- `related_name="mensagens"` para acesso reverso `tag.mensagens.all()`
-- Migration `0003_tag_mensagem_tags.py` (cria tabela de junção)
-- Template exibe tags como badges `#nometag` quando presentes
-- Admin com `filter_horizontal` para melhor usabilidade
-- `list_filter` por tags no admin
+- `MensagemForm` (`ModelForm`) em `home/forms.py` com campo de tags como texto livre
+- View `nova_mensagem` que processa GET (mostra formulário) e POST (valida e salva)
+- Criação automática de tags via `get_or_create` e `slugify`
+- Padrão Post/Redirect/Get (PRG) com `redirect("index")`
+- Template `home/nova.html` com `{% csrf_token %}` e exibição de erros campo a campo
+- Botão **+ Nova mensagem** e link na página inicial
